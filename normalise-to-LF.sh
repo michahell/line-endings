@@ -1,9 +1,14 @@
-# first we add a .gitattributes file with settings in it to always normalise to LF.
+echo "\nFirst, we add a .gitattributes file with below settings in it to always normalise to LF:\n"
 
 touch .gitattributes
 chmod +rwx .gitattributes
 echo "* text=auto eol=lf" > .gitattributes
+cat .gitattributes
 
-# now, we convert "the entire repository" (meaning all files in demo-files) to CRLF.\
+echo "\nWe copy over demo files to a simulated repository \"fake-root\":\n"
 
-unix2dos ./demo-files/**
+cp demo-files/** fake-root/
+
+echo "\nNow, we convert \"the entire repository root\" (meaning all files in fake-root) to CRLF:\n"
+
+unix2dos ./fake-root/**
